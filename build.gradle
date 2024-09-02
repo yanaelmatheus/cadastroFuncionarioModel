@@ -1,0 +1,43 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.3'
+	id 'io.spring.dependency-management' version '1.1.6'
+	id("org.flywaydb.flyway") version "10.17.2"
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.4'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '3.3.0'
+	implementation 'org.flywaydb:flyway-core:9.16.0'
+	implementation group: 'com.google.code.gson', name: 'gson', version: '2.7'
+	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.34'
+	implementation group: 'org.springframework.data', name: 'spring-data-jpa', version: '3.3.3'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	
+}
+
+flyway {
+    url = 'jdbc:postgresql://localhost:5432/DESAFIODOIS'
+    user = 'postgres'
+    password = 'root'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
