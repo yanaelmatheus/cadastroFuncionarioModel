@@ -32,12 +32,6 @@ dependencies {
 	
 }
 
-flyway {
-    url = 'jdbc:postgresql://localhost:5432/DESAFIODOIS'
-    user = 'postgres'
-    password = 'root'
-}
-
 tasks.named('test') {
 	useJUnitPlatform()
 }
